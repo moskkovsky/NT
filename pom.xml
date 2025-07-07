@@ -12,8 +12,10 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gatling.version>3.9.5</gatling.version>
+        <gatling.version>3.13.5</gatling.version>
         <gatling-maven-plugin.version>4.3.0</gatling-maven-plugin.version>
+        <gatling-logback.version>1.4.7</gatling-logback.version>
+        <jmeter-java-dsl.version>1.19</jmeter-java-dsl.version>
     </properties>
 
     <dependencies>
@@ -23,12 +25,14 @@
             <version>${gatling.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>io.gatling</groupId>
             <artifactId>gatling-recorder</artifactId>
             <version>${gatling.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>io.gatling.highcharts</groupId>
             <artifactId>gatling-charts-highcharts</artifactId>
@@ -42,6 +46,7 @@
             <version>${gatling.version}</version>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>io.gatling</groupId>
             <artifactId>gatling-redis</artifactId>
@@ -49,11 +54,17 @@
             <scope>test</scope>
         </dependency>
 
-
         <dependency>
             <groupId>us.abstracta.jmeter</groupId>
             <artifactId>jmeter-java-dsl</artifactId>
-            <version>1.19</version>
+            <version>${jmeter-java-dsl.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${gatling-logback.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -69,21 +80,6 @@
                     <simulationsFolder>src/test/scala</simulationsFolder>
                     <resultsFolder>target/gatling/results</resultsFolder>
                 </configuration>
-            </plugin>
-
-
-            <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>4.8.1</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
